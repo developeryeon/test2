@@ -77,7 +77,6 @@
                     .then((data) => {
                     let temperature = data['temp'];
 
-                    let temp_html = ``;
                     if (temperature > 20) {
                         //이미 있는 변수에다가 데이터를 넣을 때는 let을 붙이면 안된다.
                         $('#msg').text('더워요');
