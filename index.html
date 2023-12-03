@@ -24,14 +24,14 @@
     
             <script type="module">
 
-                // Firebase SDK 라이브러리 가져오기
+                
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
                 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
                 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
                 import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
-                // Firebase 구성 정보 설정
+                
                 const firebaseConfig = {
                     apiKey: "AIzaSyCscJMefw_FTtY-g4zV5pYBRFldQ4-pF-o",
                     authDomain: "sparta-36c65.firebaseapp.com",
@@ -42,30 +42,29 @@
                 }; 
 
 
-                // Firebase 인스턴스 초기화
+               
                 const app = initializeApp(firebaseConfig);
                 const db = getFirestore(app);
 
 
-                // 기록하기 버튼 눌렀을 때 이미지 주소, 제목, 별점, 추천 이유를 firestore에 넣어줘야한다.
+                
                 $("#postingBtn").click(async function () {
                     let image = $('#image').val();
                     let title = $('#title').val();
                     let comment = $('#comment').val();
                     let star = $('#star').val();
                 
-                //동적으로 이 네개의 값을 받아와서 doc(document)을 하나 만든 다음에 addDoc이라고 해서 하나 넣어줬다.
 
                 let doc = {
                     'image':image,
                     'title':title,
                     'comment':comment,
                     'star':star, 
-                }; // 넣고싶은 데이터로 addDoc(collection(,doc 여기에))에 넣으면 된다.
+                }; 
                 await addDoc(collection(db, "movies"), doc); 
                 alert('저장 완료!');
 
-                //새로고침하는 코드
+                
                 window.location.reload();
             })
 
@@ -79,7 +78,7 @@
 
                     let temp_html = ``;
                     if (temperature > 20) {
-                        //이미 있는 변수에다가 데이터를 넣을 때는 let을 붙이면 안된다.
+                       
                         $('#msg').text('더워요');
                     } else {
                         $('#msg').text('추워요');
@@ -98,7 +97,7 @@
                         let star = row['star'];
                         
 
-                    //어디다가 이 포스터를 붙일거이냐? movies_card 쪽에다가 하나 더 만들어주세요.
+                    
                         let temp_html = `
                             <div class="col">
                                 <div class="card h-100">
@@ -116,8 +115,6 @@
                     }); 
                    
 
-                    //forEach는 하나씩 하나씩 가져다가 쓰는 것
-                    //함수라는건 기본적으로 같은 동작을 반복한다.
 
                     $("#saveBtn").click(async function () {
                         $('#posting').toggle();
