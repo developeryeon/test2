@@ -73,15 +73,18 @@
                     .then((res) => res.json())
                     .then((data) => {
                     let temperature = data['temp'];
+                    //$('#temp-wrap').text(temperature);
+                    let cold = `추워요`;
+                    let hot = `더워요`;
 
                     if (temperature > 20) {
-                        $('#msg').text('더워요');
+                        $('#temp-wrap').text(hot);
                     } else {
-                        $('#msg').text('추워요');
+                        $('#temp-wrap').text(cold);
                     }
-                    $('#msg').append(temp_html);
                 });
 
+                
                 let docs = await getDocs(collection(db, "movies"));
 
                 $('#wrap-card').empty();
@@ -142,7 +145,7 @@
                         <li><a href="#" class="nav-link px-2 text-white">시리즈</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">영화</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">내가 찜한 콘텐츠</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">현재 기온: <span id="msg"></span></a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">현재 기온: <span id="temp-wrap"></span></a></li>
                     </ul>
 
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
